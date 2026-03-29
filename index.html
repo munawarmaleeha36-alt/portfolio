@@ -8,8 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <ul class="nav-list">
+<nav class="navbar">
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-list" id="mobile-menu">
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
@@ -120,6 +125,27 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Contact Me</h2>
+
+    <script>
+    function toggleMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburger = document.querySelector('.hamburger');
+        mobileMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    }
+
+    // Close menu when clicking nav link on mobile
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburger = document.querySelector('.hamburger');
+            if (window.innerWidth <= 768) {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    });
+    </script>
             <p>Let's work together! Reach out for collaborations or inquiries.</p>
             <div class="contact-info">
                 <p>Email: munawarmaleeha36@gmail.com</p>
